@@ -58,10 +58,11 @@ using System.ComponentModel;
 
 class Program
 {
-    
-    
-    public static bool VardaParbaude(string vards)//metode, kas pārbauda vai ievadītais vārds atbilst nosacījumiem
+
+    //metode, kas pārbauda vai ievadītais vārds atbilst nosacījumiem
+    public static bool VardaParbaude(string vards)
     {
+        Console.WriteLine($"Pārbaudu vārdu - {vards}");
         if (string.IsNullOrEmpty(vards))
         {
             Console.WriteLine("Ievadiet derīgu vārdu.");
@@ -77,22 +78,30 @@ class Program
         {             Console.WriteLine("Ievadiet tikai vienu vārdu bez atstarpēm.");
             return false;
         }
+        if (!vards.All(c => char.IsLetter(c)))
+        {
+            Console.WriteLine("Vārds nedrīkst saturēt ciparus vai speciālos simbolus.");
+            return false;
+        }
         return true;
     }
-    static void IzvaditSarakstu(Dictionary<int, string> alfabets)// metoe saraksta izvadīšanai alfabēta secībā, kur tiek izvadīts katrs vārds un tā pozīcija sarakstā
+    // metode saraksta izvadīšanai alfabēta secībā, kur tiek izvadīts
+    // katrs vārds un tā pozīcija sarakstā
+    static void IzvaditSarakstu(Dictionary<int, string> izvade) 
     {
         Console.WriteLine("Latviešu vārdu saraksts alfabēta secībā:");
-        foreach (var burts in alfabets)
+        foreach (var burts in izvade)
         {
             Console.WriteLine($"{burts.Key}. {burts.Value}");
         }
     }
     static void Main(string[] args)
     {
-        int atkartojums = 1;
-        while (atkartojums == 1)
-        {
-            Dictionary<int, string> alfabets = new Dictionary<int, string>()
+        //vārdnīca liekas visērtākā datu struktūra
+        //jo tā ļauj saglabāt datus pāros (atslēga - vērtība) un
+        //viegli piekļūt vērtībām izmantojot atslēgas
+        //atslēga ir skaitlis un vērtība ir vai nu burts vai sākotnēji "tukšums"
+        Dictionary<int, string> alfabets = new Dictionary<int, string>()// vārdnīca ar alfabētu
         {
                 {1,"A"},
                 {2,"Ā"},
@@ -129,32 +138,81 @@ class Program
                 {33,"Ž"}
 
         };
-        Console.WriteLine("Ievadiet vārdus, lai izveidotu latviešu vārdu sarakstu alfabēta secībā.");
-        string vards = Console.ReadLine();
-            if (VardaParbaude(vards))
+        // "tukša" vārdnīca kurā tiks ievietoti vārdi atbilstoši alfabēta secībai
+        Dictionary<int, string> vardi = new Dictionary<int, string>()
+        {
+                {1,""},
+                {2,""},
+                {3,""},
+                {4,""},
+                {5,""},
+                {6,""},
+                {7,""},
+                {8,""},
+                {9,""},
+                {10,""},
+                {11,""},
+                {12,""},
+                {13,""},
+                {14,""},
+                {15,""},
+                {16,""},
+                {17,""},
+                {18,""},
+                {19,""},
+                {20,""},
+                {21,""},
+                {22,""},
+                {23,""},
+                {24,""},
+                {25,""},
+                {26,""},
+                {27,""},
+                {28,""},
+                {29,""},
+                {30,""},
+                {31,""},
+                {32,""},
+                {33,""}
+
+        };
+        while (vardi.ContainsValue(""))// kamēr vārdnīcā ir "tukšas" pozīcijas cikls strādā
+        {
+            Console.WriteLine("Ievadiet vārdus:");
+            string vards = Console.ReadLine();
+            if (VardaParbaude(vards))// vai vārds atbils nosacījumiem.
+             // Ja jā tad tiek meklēta tā pozīcija alfabētā un ievietots sarakstā
             {
+                Console.WriteLine("Vārds izturējis pārbaudi");
                 int pozicija = 0;
+                //ejam cauri sarakstam un meklējam pozīciju kurā ievietot vārdu
+                //salīdzinot tā pirmo burtu ar alfabēta burtiem
                 foreach (var atslega in alfabets.Keys)
                 {
                     alfabets.TryGetValue(atslega, out string burts);
                     if (burts == vards[0].ToString())
-                    {pozicija = atslega;
-                        alfabets[atslega] = vards;
-                        break;
+                    {
+                        if (string.IsNullOrEmpty(vardi[atslega]))
+                        {
+                            Console.WriteLine("Pievienoju vārdu - {0} Pozīcijā: {1}", vards, atslega);
+                            vardi[atslega] = vards;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Pozīcija {atslega} jau ir aizņemta ar vārdu - {vardi[atslega]} Aizvietoju to ar - {vards}");
+                            vardi[atslega] = vards;
+                            break;
+                        }
                     }
                 }
-                Console.WriteLine($"Pievienoju vārdu - {vards} Pozīcijā: {pozicija}");
             }
-            
-            else
-            {
-                Console.WriteLine("Šoreiz gan ievadi vārdu kas atbilst nosacījumiem");
-                vards = Console.ReadLine();
-            }
-            IzvaditSarakstu(alfabets);
+        }
+        Console.WriteLine("Saraksts ir pilnībā aizpildīts!");
+        Console.WriteLine("--------------------------------------------------");
+        Console.WriteLine("Izvada sarakstu...");
+        IzvaditSarakstu(vardi);
+        Console.WriteLine("--------------------------------------------------");
+        Console.WriteLine("Paldies par programmas izmantošanu!");
 
-            Console.WriteLine("Vai velies atkartot? (1 - Jā, 0 - Nē)");
-        atkartojums = Convert.ToInt32(Console.ReadLine());
     }
-}
 }
