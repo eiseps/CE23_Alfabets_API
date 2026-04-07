@@ -29,21 +29,21 @@ Punkts par katru no šādām programmas darbībām:
 
 Vārda ievads
 
-Nodrošināt vārda ievadīšanu.
-Pārbaudīt lietotāja ievadīto vērtību, vai tas ir vārds (visas citas vērtības netiek ieskaitītas kā pareizas).
-Katru reizi ievadīt tikai vienu vārdu, nevis vārdu virkni.
-Pārbaudīt, vai vārda pirmais burts ir lielais burts.
-Atkārtoti ievadīt vērtību, ja ievadītā vērtība bijusi kļūdaina.
-Datu struktūra
+-Nodrošināt vārda ievadīšanu.
+-Pārbaudīt lietotāja ievadīto vērtību, vai tas ir vārds (visas citas vērtības netiek ieskaitītas kā pareizas).
+-Katru reizi ievadīt tikai vienu vārdu, nevis vārdu virkni.
+-Pārbaudīt, vai vārda pirmais burts ir lielais burts.
+-Atkārtoti ievadīt vērtību, ja ievadītā vērtība bijusi kļūdaina.
+-Datu struktūra
 
-Izveidot datu struktūru, kurā uzglabāt latviešu alfabētu un tam atbilstošā sākumburta pozīcijas kārtas numuru.
-Izveidot datu struktūru, kurā glabāt jauno izveidoto sarakstu.
-Noteikt ievadītā vārda pirmo burtu.
-Ja vārda pozīcija sarakstā jau ir aizņemta ar kādu vārdu, tad to aizvietot ar ievadīto vārdu.
-Ja vārda pozīcijas sarakstā vārda nav, tad tajā tiek ievietots ievadītais vārds.
-Pārbaudītais vārds tiek ievietots alfabēta secības atbilstošajā pozīcijā, ņemot vērā tā pirmo burtu.
-Izdrukāt katru programmas darbību kā lasāmu teikumu.
-Izvadīt kļūdas paziņojumu, ja ievadītais vārds neatbilst noteikumiem.
-Datu struktūrā nedrīkst būt nultais elements.
+-Izveidot datu struktūru, kurā uzglabāt latviešu alfabētu un tam atbilstošā sākumburta pozīcijas kārtas numuru.
+-Izveidot datu struktūru, kurā glabāt jauno izveidoto sarakstu.
+-Noteikt ievadītā vārda pirmo burtu.
+-Ja vārda pozīcija sarakstā jau ir aizņemta ar kādu vārdu, tad to aizvietot ar ievadīto vārdu.
+-Ja vārda pozīcijas sarakstā vārda nav, tad tajā tiek ievietots ievadītais vārds.
+-Pārbaudītais vārds tiek ievietots alfabēta secības atbilstošajā pozīcijā, ņemot vērā tā pirmo burtu.
+-Izdrukāt katru programmas darbību kā lasāmu teikumu.
+-Izvadīt kļūdas paziņojumu, ja ievadītais vārds neatbilst noteikumiem.
+-Datu struktūrā nedrīkst būt nultais elements.
 Programma darbojas, līdz viss saraksts ir aizpildīts.
 
